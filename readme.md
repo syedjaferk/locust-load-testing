@@ -71,4 +71,31 @@ constant_pacing and constant_throughput are both features in Locust that regulat
         Constant Pacing: Useful when you want to simulate a consistent workload or a specific level of activity on the system under test, regardless of variations in task execution times or system load.
         Constant Throughput: Ideal for simulating a consistent load on the system by controlling the rate at which requests are sent to it, ensuring a stable number of requests per second.
 
+4. If there are 2 classes, how will you give the priority for one class to have more users ?
+
+You can mention the `weight` attribute. Which will seggregate the users. 
+
+```
+
+from locust import User, task, between
+
+class MyWebUser(User):
+
+    wait_time=between(1, 2)
+    weight = 3
+
+    @task
+    def login_url(self):
+        print("I am logging into Web Url")
+
+
+class MyMobileUser(User):
+
+    wait_time=between(1, 2)
+    weight = 1
+
+    @task
+    def login_url(self):
+        print("I am logging into Mobile Url")
+```
 
