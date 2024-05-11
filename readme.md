@@ -99,3 +99,10 @@ class MyMobileUser(User):
         print("I am logging into Mobile Url")
 ```
 
+5. Can i do all the configuration using cli ?
+
+```
+locust -f headless.py -u 5 -r 1 -t 10s --headless --logfile .logfile --loglevel DEBUG
+
+```
+
